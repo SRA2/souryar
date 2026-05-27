@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S. R.</title>
+  <meta
+    name="description"
+    content="Academic homepage for S. R.: publications, education, and contact information."
+  />
+
+  <style>
+    :root {
+      --bg: #f8f6f0;
+      --surface: #ffffff;
+      --surface-soft: #f1efe7;
+      --ink: #24384a;
+      --muted: #5f6c75;
+      --line: #dcd9cf;
+      --sage: #7f927d;
+      --sage-soft: #e6ebe3;
+      --blue: #426b8f;
+      --shadow: 0 18px 45px rgba(55, 66, 77, 0.08);
+      --radius: 22px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(127, 146, 125, 0.13), transparent 32rem),
+        linear-gradient(180deg, #fbfaf6 0%, #f8f6f0 100%);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(220, 217, 207, 0.9);
+      background: rgba(248, 246, 240, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.45rem);
+      letter-spacing: -0.035em;
+      color: #21384b;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 4vw, 48px);
+      font-size: 0.98rem;
+      color: #2d4153;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--sage);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .hero {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+      padding: clamp(48px, 9vw, 96px) 0 54px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.35fr;
+      gap: clamp(36px, 7vw, 76px);
+      align-items: center;
+    }
+
+    .landscape-card {
+      min-height: 460px;
+      border-radius: 48% 48% 4px 4px / 36% 36% 4px 4px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg, #f3eee4 0%, #eef0eb 52%, #e7ebe6 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(220, 217, 207, 0.8);
+    }
+
+    .sun {
+      position: absolute;
+      top: 76px;
+      left: 50%;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      background: rgba(224, 211, 190, 0.72);
+      box-shadow: 0 0 60px rgba(224, 211, 190, 0.55);
+    }
+
+    .mountain {
+      position: absolute;
+      left: -8%;
+      width: 116%;
+      height: 48%;
+      border-radius: 50% 50% 0 0 / 42% 42% 0 0;
+      opacity: 0.9;
+    }
+
+    .mountain.one {
+      bottom: 160px;
+      background: linear-gradient(130deg, transparent 0 17%, #cfd8d4 18% 42%, transparent 43%),
+        linear-gradient(35deg, transparent 0 22%, #d7dfdc 23% 58%, transparent 59%);
+      opacity: 0.72;
+    }
+
+    .mountain.two {
+      bottom: 110px;
+      background: linear-gradient(142deg, transparent 0 12%, #b9c8c5 13% 47%, transparent 48%),
+        linear-gradient(30deg, transparent 0 29%, #c9d3cf 30% 68%, transparent 69%);
+      opacity: 0.82;
+    }
+
+    .water {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 42%;
+      background: linear-gradient(180deg, rgba(232, 235, 230, 0.95), rgba(242, 239, 231, 0.9));
+    }
+
+    .water::before,
+    .water::after {
+      content: "";
+      position: absolute;
+      left: 22%;
+      right: 12%;
+      height: 1px;
+      background: rgba(127, 146, 125, 0.16);
+    }
+
+    .water::before {
+      top: 44px;
+    }
+
+    .water::after {
+      top: 86px;
+    }
+
+    .branch {
+      position: absolute;
+      left: 22px;
+      bottom: 16px;
+      width: 210px;
+      height: 240px;
+      opacity: 0.9;
+    }
+
+    .stem {
+      position: absolute;
+      left: 55px;
+      bottom: 0;
+      width: 2px;
+      height: 220px;
+      background: #778a75;
+      transform: rotate(30deg);
+      transform-origin: bottom;
+      border-radius: 999px;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 34px;
+      height: 15px;
+      border-radius: 100% 0 100% 0;
+      background: #7d927f;
+      transform: rotate(var(--r));
+      opacity: 0.82;
+    }
+
+    .leaf:nth-child(2) { left: 74px; bottom: 56px; --r: -22deg; }
+    .leaf:nth-child(3) { left: 112px; bottom: 88px; --r: 20deg; }
+    .leaf:nth-child(4) { left: 77px; bottom: 122px; --r: -38deg; }
+    .leaf:nth-child(5) { left: 128px; bottom: 146px; --r: 10deg; }
+    .leaf:nth-child(6) { left: 103px; bottom: 178px; --r: -28deg; }
+    .leaf:nth-child(7) { left: 154px; bottom: 196px; --r: 14deg; }
+
+    .intro h1,
+    .section-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      color: #20384c;
+    }
+
+    .intro h1 {
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      max-width: 780px;
+    }
+
+    .accent-line {
+      width: 64px;
+      height: 3px;
+      margin: 28px 0 28px;
+      background: var(--sage);
+    }
+
+    .intro p {
+      max-width: 660px;
+      margin: 0;
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      color: #3e4c58;
+    }
+
+    .affiliation {
+      margin-top: 48px;
+      padding-top: 34px;
+      border-top: 1px solid rgba(127, 146, 125, 0.48);
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #405161;
+      font-size: 1.03rem;
+    }
+
+    .affiliation-icon {
+      width: 68px;
+      height: 68px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #eff2ec;
+      border: 1px solid rgba(127, 146, 125, 0.25);
+      color: var(--sage);
+    }
+
+    main {
+      background: rgba(255, 255, 255, 0.42);
+      border-top: 1px solid rgba(220, 217, 207, 0.65);
+    }
+
+    .section {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 0;
+    }
+
+    .section:last-of-type {
+      padding-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+    }
+
+    .section .accent-line {
+      margin: 14px 0 20px;
+      width: 56px;
+      height: 2px;
+    }
+
+    .list-card {
+      overflow: hidden;
+      border: 1px solid rgba(220, 217, 207, 0.9);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 14px 36px rgba(55, 66, 77, 0.07);
+    }
+
+    .publication,
+    .education-item {
+      display: grid;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(220, 217, 207, 0.8);
+    }
+
+    .publication:last-child,
+    .education-item:last-child {
+      border-bottom: none;
+    }
+
+    .publication {
+      grid-template-columns: 58px minmax(280px, 1fr) 180px 110px;
+    }
+
+    .number,
+    .edu-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      color: #60735f;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.28rem;
+    }
+
+    .pub-title,
+    .degree {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.13rem;
+      line-height: 1.35;
+      color: #21384b;
+    }
+
+    .authors,
+    .venue,
+    .school,
+    .year {
+      color: #4f5d68;
+      font-size: 0.98rem;
+    }
+
+    .venue span {
+      color: var(--blue);
+      font-weight: 500;
+      margin-right: 8px;
+    }
+
+    .education-item {
+      grid-template-columns: 66px 1fr 80px;
+    }
+
+    .school {
+      margin-top: 2px;
+    }
+
+    .year {
+      text-align: right;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      color: #344554;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(220, 217, 207, 0.8);
+      background: rgba(239, 237, 229, 0.85);
+    }
+
+    .footer-inner {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 108px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 32px;
+      align-items: center;
+      color: #4e5c65;
+    }
+
+    .email,
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 42px;
+      background: rgba(127, 146, 125, 0.42);
+    }
+
+    .socials {
+      justify-content: flex-end;
+      gap: 22px;
+    }
+
+    .icon-link {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #384a59;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .icon-link:hover,
+    .icon-link:focus-visible {
+      background: rgba(127, 146, 125, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .scholar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #384a59;
+      font-weight: 500;
+      transition: transform 160ms ease, color 160ms ease;
+    }
+
+    .scholar-link:hover,
+    .scholar-link:focus-visible {
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .scholar-icon {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--sage);
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+    }
+
+    svg {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        min-height: auto;
+        padding: 22px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 14px;
+        font-size: 0.92rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 42px;
+      }
+
+      .landscape-card {
+        min-height: 360px;
+        max-width: 440px;
+      }
+
+      .publication {
+        grid-template-columns: 54px 1fr;
+        gap: 12px 18px;
+      }
+
+      .authors,
+      .venue {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav,
+      .hero,
+      .section,
+      .footer-inner {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .nav-links {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 2px;
+      }
+
+      .intro h1 {
+        font-size: 2.7rem;
+      }
+
+      .affiliation {
+        align-items: flex-start;
+        font-size: 0.98rem;
+      }
+
+      .publication,
+      .education-item {
+        padding: 18px;
+      }
+
+      .education-item {
+        grid-template-columns: 56px 1fr;
+      }
+
+      .education-item .year {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        padding: 28px 0;
+        gap: 22px;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .socials {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">S. R.</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div class="landscape-card" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="mountain one"></div>
+        <div class="mountain two"></div>
+        <div class="water"></div>
+        <div class="branch">
+          <div class="stem"></div>
+          <div class="leaf"></div>
+          <div class="leaf"></div>
+          <div class="leaf"></div>
+          <div class="leaf"></div>
+          <div class="leaf"></div>
+          <div class="leaf"></div>
+        </div>
+      </div>
+
+      <div class="intro">
+        <h1>Hello, I&rsquo;m Sourya</h1>
+        <div class="accent-line" aria-hidden="true"></div>
+        <p>
+          I am an assistant professor at the University of Iowa - Computer Science department. 
+          Before this, I was a data scientist at Foursquare. 
+          I did my PhD in Computer Science from UC Riverside, where I was fortuante to be advised by Silas Richelson and Amey Bhangale. 
+          My primary research interest lies in theoretical computer science, specifically in exploring pseudorandomness and its connections and applications to areas such as coding theory, cryptography, etc.
+          I am also interested in computer vision and worked on several applied ML/computer vision projects.
+        </p>
+
+        <div class="affiliation">
+          <div class="affiliation-icon" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21V7" />
+              <path d="M7 12c-3 0-5-2-5-5 3 0 5 2 5 5Z" />
+              <path d="M17 9c3 0 5-2 5-5-3 0-5 2-5 5Z" />
+              <path d="M8 17c-3 0-5-2-5-5 3 0 5 2 5 5Z" />
+              <path d="M16 15c3 0 5-2 5-5-3 0-5 2-5 5Z" />
+            </svg>
+          </div>
+          <div>
+            Assistant Professor &nbsp;&bull;&nbsp; Department of Computer Science &nbsp;&bull;&nbsp;<br />
+            University of Iowa
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="section" id="publications">
+        <h2 class="section-title">Selected Publications</h2>
+        <div class="accent-line" aria-hidden="true"></div>
+
+        <div class="list-card" aria-label="Selected publications">
+           <article class="publication">
+            <div class="number">2</div>
+            <h3 class="pub-title">Pseudorandomness of Expander Walks via Fourier Analysis on Groups.</h3>
+            <div class="authors">FG Jeronimo, T Mittal, S Roy.</div>
+            <div class="venue"><span>RANDOM</span>2025</div>
+          </article>
+
+          <article class="publication">
+            <div class="number">2</div>
+            <h3 class="pub-title">Pseudorandomness of Expander Walks via Fourier Analysis on Groups.</h3>
+            <div class="authors">FG Jeronimo, T Mittal, S Roy.</div>
+            <div class="venue"><span>RANDOM</span>2025</div>
+          </article>
+        </div>
+      </section>
+
+    
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <a class="email" href="sourya-roy@uiowa.edu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 7 9 6 9-6" />
+          </svg>
+          sourya-roy@uiowa.edu
+        </a>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="socials" aria-label="Academic profile links">
+          <a class="scholar-link" href="https://scholar.google.com/citations?hl=en&user=E8YS9QEAAAAJ&view_op=list_works&sortby=pubdate" aria-label="Google Scholar profile">
+            <span class="scholar-icon" aria-hidden="true">G</span>
+            Scholar
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

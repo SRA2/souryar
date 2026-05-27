@@ -220,37 +220,38 @@
       box-shadow: var(--shadow);
     }
 
-    .publication {
+  .publication {
   display: grid;
-  grid-template-columns: 30px minmax(0, 1.4fr) minmax(220px, 0.7fr) 110px;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 14px;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: start;
+  padding: 8px 16px;
   border-bottom: 1px solid rgba(220, 217, 207, 0.65);
 }
 
 .publication:last-child {
   border-bottom: none;
 }
-    .number {
-  width: 20px;
-  height: 20px;
+
+.number {
+  width: 22px;
+  height: 22px;
   display: grid;
   place-items: center;
   border-radius: 6px;
   background: var(--sage-soft);
   color: var(--sage-dark);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
   font-weight: 600;
 }
 
-   .pub-title {
+.pub-title {
   margin: 0;
   color: #657078;
   font-size: 13px;
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 1.28;
 }
 
 .pub-title a {
@@ -262,10 +263,18 @@
   text-decoration: underline;
 }
 
-   .authors {
+.pub-venue {
+  color: var(--sage-dark);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.authors {
+  grid-column: 2;
   color: var(--muted-light);
   font-size: 11.5px;
-  line-height: 1.18;
+  line-height: 1.25;
 }
 
 .authors strong {

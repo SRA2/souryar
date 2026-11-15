@@ -3,461 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Sourya Roy</title>
-  <meta
-    name="description"
-    content="Academic homepage for Sourya Roy: research, selected publications, and contact information."
-  />
+  <meta name="description" content="Academic homepage for Sourya Roy: research, selected publications, and contact information." />
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --surface-soft: #f1efe7;
-      --ink: #3f4c55;
-      --muted: #6f7a82;
-      --muted-light: #8a9299;
-      --line: #dcd9cf;
-      --sage: #7f927d;
-      --sage-soft: #e6ebe3;
-      --sage-dark: #60735f;
-      --link: #60766d;
-      --shadow: 0 12px 32px rgba(55, 66, 77, 0.065);
-      --radius: 18px;
-      --max-width: 1120px;
+      --fir: #0E4F4C;      /* deep teal: name, headings, footer text */
+      --spruce: #1F8A84;   /* teal: links, accents */
+      --fern: #4FA39C;     /* soft teal: secondary accents */
+      --sage: #E8F3F1;     /* pale sea-glass: footer band */
+      --sage-soft: #DDEFEC;/* venue chips */
+      --paper: #FFFFFF;    /* page background */
+      --card: #F4FAF9;
+      --ink: #22302F;
+      --muted: #5B6B69;
+      --line: #E0EAE8;
+      --max: 1080px;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+      --display: var(--sans);
+      --serif: var(--sans);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      background: var(--bg);
+      background: var(--paper);
       color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 14px;
-      line-height: 1.52;
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+      font-feature-settings: "cv11", "ss01";
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-      text-underline-offset: 3px;
-    }
+    a { color: var(--spruce); text-decoration: underline; text-decoration-color: rgba(31,138,132,0.3); text-underline-offset: 3px; }
+    a:hover, a:focus-visible { color: var(--fir); text-decoration-color: var(--fir); }
 
-    a:hover,
-    a:focus-visible {
-      color: var(--sage-dark);
-      text-decoration: underline;
-    }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
 
-    .page {
-      min-height: 100vh;
-      background: #ffffff;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(220, 217, 207, 0.86);
-      background: #83b8b1;
-      backdrop-filter: blur(16px);
-    }
-
-    .nav {
-      width: min(var(--max-width), calc(100% - 40px));
-      min-height: 56px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 24px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(18px, 4vw, 42px);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .nav-links a {
+    /* ---------- Header band with forest ---------- */
+    .hero {
       position: relative;
-      padding: 5px 0;
-      color: #23423e;
-      
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--fir);
+      overflow: hidden;
+    }
+    .hero .trees {
+      position: absolute;
+      right: 0; bottom: 0;
+      width: min(720px, 75%);
+      height: 78%;
+      pointer-events: none;
+    }
+    .nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: flex-end;
+      gap: 28px;
+      padding-top: 22px;
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+    .nav a {
+      color: var(--fir);
+      text-decoration: none;
+      padding: 4px 0;
+      border-bottom: 1.5px solid transparent;
+    }
+    .nav a:hover, .nav a:focus-visible { border-bottom-color: var(--fir); }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 42px 0 87px;
+    }
+    .eyebrow {
+      margin: 0 0 4px;
+      font-family: var(--display);
+      font-size: 20px;
+      color: var(--fir);
+    }
+    .hero h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(28px, 4.2vw, 43px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--fir);
     }
 
-    .nav-links a::after {
+    /* ---------- About ---------- */
+    .about {
+      display: grid;
+      grid-template-columns: 142px minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+    .photo {
+      margin-top: -48px;
+      position: relative;
+      z-index: 3;
+      width: 142px;
+      aspect-ratio: 4 / 5;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 4px solid var(--paper);
+      background: var(--sage-soft);
+    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .about-text { padding-top: 20px; }
+    .about-text p { margin: 0; }
+    .affiliation {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ---------- Ph.D. callout ---------- */
+    .callout {
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--spruce);
+      border-radius: 0 12px 12px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 16px;
+    }
+    .callout svg { flex: none; margin-top: 2px; }
+    .callout p { margin: 0; }
+    .callout .label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--spruce);
+      margin-bottom: 2px;
+    }
+
+    /* ---------- Publications ---------- */
+    .section { padding-top: 32px; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+      color: var(--fir);
+    }
+
+    .pubs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+    .pub {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 28px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .venue {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      justify-self: end;
+      margin-top: 3px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--sage-soft);
+      color: var(--fir);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .pub-title {
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .pub-title a { color: var(--ink); text-decoration-color: rgba(34,48,47,0.2); }
+    .pub-title a:hover { color: var(--spruce); text-decoration-color: var(--spruce); }
+    .authors {
+      grid-column: 1;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .authors strong { color: var(--fir); font-weight: 500; }
+
+    /* tiny pine before each paper title */
+    .pub-title { padding-left: 22px; position: relative; }
+    .pub-title::before {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--sage);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 180ms ease;
+      left: 0; top: 0.28em;
+      width: 12px; height: 15px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 15'%3E%3Cpolygon points='6,0 12,11 0,11' fill='%231F8A84'/%3E%3Crect x='5' y='11' width='2' height='4' fill='%237A5134'/%3E%3C/svg%3E") no-repeat center / contain;
+    }
+    .authors { padding-left: 22px; }
+
+    /* ---------- Topographic background ---------- */
+    .topo-area { position: relative; overflow-x: clip; padding-bottom: 80px; }
+    .topo { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.4; }
+    .topo-area > main { position: relative; z-index: 1; }
+    /* text halo: lines fade out where they meet letters */
+    .topo-area main p, .topo-area main .pub-title, .topo-area main .authors, .topo-area main .affiliation, .topo-area main .section-title {
+      text-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 10px #fff;
     }
 
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-   .hero {
-  width: min(var(--max-width), calc(100% - 40px));
-  margin: 0 auto;
-  padding: 18px 0 16px;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 16px;
-  align-items: center;
-}
-   .profile-card {
-  width: 100%;
-  max-width: 150px;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid rgba(220, 217, 207, 0.86);
-  border-radius: 14px;
-  background: var(--surface-soft);
-  box-shadow: var(--shadow);
-}
-
-.profile-card img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
-    .intro h1,
-    .section-title {
-      margin: 0;
-      color: #45545d;
-      font-family: inherit;
-      font-weight: 500;
-      letter-spacing: -0.025em;
-    }
-
-    .intro h1 {
-      max-width: 780px;
-      font-size: 20px;
-      line-height: 1.04;
-    }
-
-    .accent-line {
-      width: 56px;
-      height: 2px;
-      margin: 14px 0 14px;
-      background: var(--sage);
-      opacity: 0.78;
-    }
-
-    .intro p {
-      max-width: 720px;
-      margin: 0;
-      color: #59646c;
-      font-size: 13.5px;
-      line-height: 1.56;
-    }
-
-    .affiliation {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(127, 146, 125, 0.36);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    main {
-      border-top: 1px solid rgba(220, 217, 207, 0.62);
-      background: rgba(255, 255, 255, 0.38);
-    }
-
-    .section {
-      width: min(var(--max-width), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 18px 0 0;
-    }
-
-    .section:last-of-type {
-      padding-bottom: 34px;
-    }
-
-    .section-title {
-      font-size: 21px;
-      line-height: 1.1;
-    }
-
-    .section .accent-line {
-      width: 44px;
-      height: 2px;
-      margin: 8px 0 12px;
-    }
-
-    .list-card {
-      overflow: hidden;
-      border: 1px solid rgba(220, 217, 207, 0.86);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.76);
-      box-shadow: var(--shadow);
-    }
-
-  .publication {
-  display: grid;
-  grid-template-columns: 30px minmax(0, 1fr);
-  gap: 4px 12px;
-  align-items: start;
-  padding: 8px 16px;
-  border-bottom: 1px solid rgba(220, 217, 207, 0.65);
-}
-
-.publication:last-child {
-  border-bottom: none;
-}
-
-.number {
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  border-radius: 6px;
-  background: var(--sage-soft);
-  color: var(--sage-dark);
-  font-size: 11px;
-  line-height: 1;
-  font-weight: 600;
-}
-
-.pub-title {
-  margin: 0;
-  color: #657078;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.28;
-}
-
-.pub-title a {
-  color: inherit;
-}
-
-.pub-title a:hover {
-  color: var(--sage-dark);
-  text-decoration: underline;
-}
-
-.pub-venue {
-  color: var(--sage-dark);
-  font-size: 12px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.authors {
-  grid-column: 2;
-  color: var(--muted-light);
-  font-size: 11.5px;
-  line-height: 1.25;
-}
-
-.authors strong {
-  color: #5f6b63;
-  font-weight: 650;
-}
-
-
-   .venue {
-  justify-self: end;
-  color: #7d8790;
-  font-size: 12px;
-  line-height: 1.18;
-  white-space: nowrap;
-}
-
-.venue span {
-  color: var(--sage-dark);
-  font-weight: 600;
-  margin-right: 5px;
-}
-    .paper-link {
-  display: none;
-}
+    /* ---------- Footer ---------- */
     .footer {
-      border-top: 1px solid rgba(220, 217, 207, 0.78);
-      background: rgba(239, 237, 229, 0.78);
-    }
-
-    .footer-inner {
-      width: min(var(--max-width), calc(100% - 40px));
-      min-height: 78px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 22px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .email,
-    .socials {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .email svg {
-      color: var(--sage);
-    }
-
-    .divider {
-      width: 1px;
-      height: 32px;
-      background: rgba(127, 146, 125, 0.34);
-    }
-
-    .socials {
-      justify-content: flex-end;
-    }
-
-    .scholar-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .scholar-icon {
-      width: 27px;
-      height: 27px;
-      display: inline-grid;
-      place-items: center;
-      border-radius: 50%;
+      margin-top: 0;
       background: var(--sage);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 650;
+      color: var(--fir);
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 28px 0 36px;
+    }
+    .footer a { color: var(--fir); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+    .footer a:hover { text-decoration: underline; }
+    .footer .links { display: flex; gap: 24px; }
+    .scholar-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: inline-grid; place-items: center;
+      background: var(--fir); color: var(--sage);
+      font-size: 12px; font-weight: 500;
     }
 
-    svg {
-      display: block;
-    }
-
-    @media (max-width: 900px) {
-      .nav {
-        min-height: auto;
-        padding: 16px 0;
-        justify-content: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 18px;
-        overflow-x: auto;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 18px;
-      }
-
-      .profile-card {
-        max-width: 360px;
-      }
-
-      .publication {
-        grid-template-columns: 30px minmax(0, 1fr);
-        gap: 4px 10px;
-      }
-
-      .authors,
-      .venue,
-      .paper-link {
-        grid-column: 2;
-        justify-self: start;
-      }
-
-      .paper-link {
-        margin-top: 2px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav,
-      .hero,
-      .section,
-      .footer-inner {
-        width: min(100% - 28px, var(--max-width));
-      }
-
-      .intro h1 {
-        font-size: 2.35rem;
-      }
-
-      .intro p {
-        font-size: 13px;
-      }
-
-      .publication {
-        padding: 8px 12px;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-        padding: 18px 0;
-        gap: 12px;
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .socials {
-        justify-content: flex-start;
-      }
+    /* ---------- Small screens ---------- */
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      .nav { justify-content: flex-start; gap: 20px; }
+      .hero-text { padding: 20px 0 90px; }
+      .hero .trees { width: 100%; height: 55%; }
+      .about { grid-template-columns: 1fr; gap: 20px; }
+      .photo { width: 112px; margin-top: -44px; }
+      .about-text { padding-top: 0; }
+      .pub { grid-template-columns: 1fr; }
+      .authors { grid-column: 1; }
+      .venue { grid-column: 1; grid-row: 3; justify-self: start; margin: 6px 0 0 22px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
-    <header class="site-header">
+  <header class="hero">
+    <svg class="trees" viewBox="0 0 720 260" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="tree-back" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="720" y2="0"><stop offset="0" stop-color="#A9C8E8"/><stop offset="0.5" stop-color="#A6DDD6"/><stop offset="1" stop-color="#B9DDB0"/></linearGradient>
+        <linearGradient id="tree-mid" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="720" y2="0"><stop offset="0" stop-color="#2F6FA8"/><stop offset="0.5" stop-color="#1F8A84"/><stop offset="1" stop-color="#3F8A4A"/></linearGradient>
+        <linearGradient id="tree-front" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="720" y2="0"><stop offset="0" stop-color="#163A63"/><stop offset="0.5" stop-color="#0E4F4C"/><stop offset="1" stop-color="#1F4A2A"/></linearGradient>
+      </defs>
+      <g fill="url(#tree-back)">
+        <polygon points="120,260 150,120 180,260"/>
+        <polygon points="300,260 330,100 360,260"/>
+        <polygon points="470,260 505,90 540,260"/>
+        <polygon points="640,260 672,110 704,260"/>
+      </g>
+      <g fill="url(#tree-mid)">
+        <polygon points="170,260 205,90 240,260"/>
+        <polygon points="250,260 290,60 330,260"/>
+        <polygon points="350,260 380,130 410,260"/>
+        <polygon points="420,260 462,40 504,260"/>
+        <polygon points="540,260 572,120 604,260"/>
+        <polygon points="590,260 632,50 674,260"/>
+        <polygon points="680,260 708,100 736,260"/>
+      </g>
+      <g fill="url(#tree-front)">
+        <polygon points="140,260 178,150 216,260"/>
+        <polygon points="318,260 360,140 402,260"/>
+        <polygon points="490,260 528,150 566,260"/>
+        <polygon points="612,260 650,160 688,260"/>
+      </g>
+    </svg>
+
+    <div class="wrap">
       <nav class="nav" aria-label="Primary navigation">
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#publications">Publications</a>
-          <a href="#contact">Contact</a>
-        </div>
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
       </nav>
-    </header>
-
-    <section class="hero" id="about">
-      <div class="profile-card">
-        <img src="Sourya_olympic 2.png" alt="Photo of Sourya Roy" />
+      <div class="hero-text">
+        <h1>Sourya Roy</h1>
       </div>
+    </div>
+  </header>
 
-      <div class="intro">
-        <h1>About</h1>
-        <div class="accent-line" aria-hidden="true"></div>
-
+  <div class="topo-area">
+    <svg class="topo" viewBox="0 0 1200 2000" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+      <g fill="none" stroke="#BFD8D4" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path d="M1005,-80 A255,150 0 0 0 1260,70" vector-effect="non-scaling-stroke"/>
+        <path d="M860,-80 A400,235 0 0 0 1260,155" vector-effect="non-scaling-stroke"/>
+        <path d="M716,-80 A544,320 0 0 0 1260,240" vector-effect="non-scaling-stroke"/>
+        <path d="M572,-80 A688,405 0 0 0 1260,325" vector-effect="non-scaling-stroke"/>
+        <path d="M427,-80 A833,490 0 0 0 1260,410" vector-effect="non-scaling-stroke"/>
+        <path d="M-20,1150 C300,1060 640,1260 1220,1180" vector-effect="non-scaling-stroke"/>
+        <path d="M-20,1222 C300,1132 640,1332 1220,1252" vector-effect="non-scaling-stroke"/>
+        <path d="M-20,1294 C300,1204 640,1404 1220,1324" vector-effect="non-scaling-stroke"/>
+        <path d="M-20,1366 C300,1276 640,1476 1220,1396" vector-effect="non-scaling-stroke"/>
+        <path d="M-20,1438 C300,1348 640,1548 1220,1468" vector-effect="non-scaling-stroke"/>
+        <path d="M1067,700 C1070,706 1061,715 1055,719 C1050,724 1040,727 1033,729 C1025,731 1018,730 1010,731 C1002,731 993,735 984,733 C976,732 961,727 959,722 C956,716 968,706 970,700 C972,694 969,689 971,683 C974,678 978,671 984,667 C991,663 1002,658 1010,659 C1018,659 1027,666 1033,671 C1038,675 1037,681 1043,686 C1049,691 1065,694 1067,700Z" vector-effect="non-scaling-stroke"/>
+        <path d="M1150,700 C1155,714 1135,736 1121,747 C1107,759 1084,767 1066,772 C1047,776 1030,773 1010,775 C990,776 968,784 947,781 C926,777 890,767 885,754 C879,740 908,716 913,700 C918,684 910,673 915,659 C921,646 931,629 947,619 C963,609 990,597 1010,599 C1030,600 1052,617 1066,628 C1079,640 1076,654 1090,666 C1105,678 1145,686 1150,700Z" vector-effect="non-scaling-stroke"/>
+        <path d="M1233,700 C1241,722 1209,757 1187,776 C1164,795 1128,806 1099,814 C1069,821 1042,817 1010,819 C978,822 943,834 910,829 C876,823 820,807 811,785 C802,764 847,725 855,700 C863,675 850,657 859,636 C868,614 885,587 910,571 C935,555 978,537 1010,539 C1042,542 1077,569 1099,586 C1120,604 1116,626 1138,645 C1160,664 1225,678 1233,700Z" vector-effect="non-scaling-stroke"/>
+        <path d="M1316,700 C1327,730 1283,778 1252,804 C1221,830 1172,846 1132,856 C1091,866 1053,860 1010,863 C967,867 918,884 872,877 C827,869 749,846 737,817 C724,787 787,734 798,700 C809,666 791,641 803,612 C816,582 838,545 872,523 C907,501 967,476 1010,479 C1053,483 1102,520 1132,544 C1161,568 1155,599 1186,625 C1216,651 1305,670 1316,700Z" vector-effect="non-scaling-stroke"/>
+        <path d="M1399,700 C1413,738 1357,799 1318,832 C1279,865 1216,886 1165,898 C1113,911 1065,903 1010,908 C955,912 893,934 835,924 C777,914 678,886 663,849 C647,811 726,743 740,700 C755,657 732,625 747,588 C763,550 791,504 835,476 C879,448 955,415 1010,420 C1065,424 1127,471 1165,502 C1202,533 1194,572 1233,605 C1272,638 1385,662 1399,700Z" vector-effect="non-scaling-stroke"/>
+        <path d="M36,430 C34,439 24,447 18,453 C11,459 5,464 -3,469 C-11,473 -19,479 -30,481 C-41,483 -59,487 -66,482 C-74,477 -72,460 -75,451 C-78,443 -82,438 -84,430 C-86,422 -90,411 -86,403 C-83,395 -72,386 -63,382 C-54,379 -39,379 -30,381 C-21,383 -16,392 -6,396 C4,399 22,396 29,401 C36,407 38,421 36,430Z" vector-effect="non-scaling-stroke"/>
+        <path d="M109,430 C105,448 84,465 70,478 C57,492 43,502 26,512 C10,521 -8,532 -30,537 C-52,542 -90,550 -106,540 C-122,530 -118,493 -124,475 C-130,457 -139,447 -143,430 C-147,413 -155,390 -148,373 C-141,357 -119,337 -100,330 C-80,322 -50,322 -30,327 C-10,332 -1,351 20,358 C41,365 80,358 95,370 C109,382 113,412 109,430Z" vector-effect="non-scaling-stroke"/>
+        <path d="M182,430 C176,457 144,483 123,504 C102,524 82,539 56,554 C31,569 4,586 -30,593 C-64,600 -122,613 -146,597 C-170,582 -163,527 -173,499 C-182,471 -196,456 -202,430 C-208,404 -221,369 -210,344 C-199,318 -166,289 -136,277 C-106,265 -60,266 -30,273 C0,280 14,309 46,320 C78,331 137,320 160,339 C182,357 188,403 182,430Z" vector-effect="non-scaling-stroke"/>
+        <path d="M255,430 C246,467 204,501 175,529 C147,557 120,577 86,597 C51,617 15,640 -30,649 C-75,659 -154,676 -186,655 C-218,634 -209,560 -222,522 C-234,485 -253,465 -261,430 C-270,395 -286,348 -271,314 C-257,280 -213,240 -172,225 C-132,209 -71,210 -30,219 C11,229 30,268 72,283 C115,297 195,283 225,307 C255,332 263,393 255,430Z" vector-effect="non-scaling-stroke"/>
+        <path d="M327,430 C317,476 263,519 228,554 C193,589 158,614 115,640 C72,665 27,693 -30,705 C-87,718 -186,739 -226,712 C-266,686 -255,593 -271,546 C-287,499 -310,474 -321,430 C-331,386 -352,327 -333,284 C-314,241 -259,192 -209,172 C-158,152 -81,153 -30,165 C21,178 45,226 98,245 C152,263 252,245 290,276 C328,307 338,384 327,430Z" vector-effect="non-scaling-stroke"/>
+        <path d="M83,880 C82,887 86,893 83,899 C81,905 75,912 67,916 C60,921 48,927 40,926 C32,925 24,914 18,910 C11,905 7,903 0,898 C-6,893 -20,886 -21,880 C-22,874 -13,865 -7,859 C-1,854 8,849 15,847 C23,845 31,847 40,846 C49,845 61,838 70,840 C78,842 88,851 90,858 C93,864 84,873 83,880Z" vector-effect="non-scaling-stroke"/>
+        <path d="M135,880 C133,895 141,909 135,922 C129,936 116,950 100,960 C84,970 58,984 40,982 C22,979 6,956 -9,945 C-24,935 -33,930 -47,919 C-61,908 -91,894 -93,880 C-96,866 -76,846 -63,834 C-50,822 -31,813 -14,808 C3,803 20,808 40,806 C60,803 87,789 105,793 C124,797 146,816 151,831 C156,845 138,865 135,880Z" vector-effect="non-scaling-stroke"/>
+        <path d="M187,880 C183,904 196,925 187,945 C178,966 158,989 133,1004 C108,1019 68,1041 40,1037 C12,1034 -13,997 -36,981 C-58,965 -73,957 -95,940 C-117,923 -162,902 -166,880 C-170,858 -139,828 -119,809 C-99,791 -70,776 -44,768 C-17,761 9,769 40,765 C71,762 113,739 141,745 C170,752 203,782 211,804 C219,826 191,856 187,880Z" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+  <main class="wrap">
+    <section class="about" id="about">
+      <div class="photo">
+        <img src="Sourya_olympic%202.png" alt="Photo of Sourya Roy in a forest" />
+      </div>
+      <div class="about-text">
         <p>
           I am an assistant professor in the
           <a href="https://cs.uiowa.edu/">Department of Computer Science</a> at the
@@ -471,7 +369,6 @@
           applications to coding theory, cryptography, and related areas. I am also interested in
           computer vision and have worked on several applied ML/computer vision projects.
         </p>
-
         <div class="affiliation">
           Assistant Professor &nbsp;&bull;&nbsp;
           <a href="https://cs.uiowa.edu/">Department of Computer Science</a> &nbsp;&bull;&nbsp;
@@ -480,184 +377,102 @@
       </div>
     </section>
 
-<section class="section">
-  <div class="list-card" style="padding: 14px 18px;">
-    <p style="margin: 0; font-size: 14px; line-height: 1.6;">
-      <strong>Ph.D. Opportunity (Fall 2027):</strong>
-      I am looking to recruit one Ph.D. student
-      interested in research in
-      <strong>Theoretical Computer Science</strong>.
-      Interested students are welcome to
-      <a href="mailto:sourya-roy@uiowa.edu">contact me by email</a>.
-    </p>
+    <aside class="callout">
+      <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><polygon points="11,0 22,18 0,18" fill="#0E4F4C"/><polygon points="11,6 19,20 3,20" fill="#1F8A84"/><rect x="9.5" y="20" width="3" height="6" fill="#7A5134"/></svg>
+      <p>
+        <span class="label">Ph.D. opportunity · Fall 2027</span>
+        I am looking to recruit one Ph.D. student interested in research in
+        <strong>Theoretical Computer Science</strong>.
+        Interested students are welcome to
+        <a href="mailto:sourya-roy@uiowa.edu">contact me by email</a>.
+      </p>
+    </aside>
+
+    <section class="section" id="publications">
+      <h2 class="section-title">Selected Publications</h2>
+      <ol class="pubs">
+        <li class="pub">
+          <span class="venue">SOFSEM 2027</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2609.25292">Near-Optimal Online Metric Matching on &Delta;-ary HST</a></h3>
+          <div class="authors">Parth Gor, <strong>Sourya Roy</strong>, Kasturi Varadarajan</div>
+        </li>
+        <li class="pub">
+          <span class="venue">In submission</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2605.26450">Low Soundness Linearity Testing on the Half-Slice</a></h3>
+          <div class="authors">Haakon Larsen, Tushant Mittal, Silas Richelson, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">PODC 2026</span>
+          <h3 class="pub-title">Improved Bounds for Distributed Random Walks and Spanning Trees</h3>
+          <div class="authors">Gopal Pandurangan, Sriram Pemmaraju, <strong>Sourya Roy</strong>, Joshua Sobel</div>
+        </li>
+        <li class="pub">
+          <span class="venue">ITCS 2026</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2509.05871">A General Framework for Low Soundness Homomorphism Testing</a></h3>
+          <div class="authors">Tushant Mittal, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">RANDOM 2025</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2507.14445">Pseudorandomness of Expander Walks via Fourier Analysis on Groups</a></h3>
+          <div class="authors">Fernando Granha Jeronimo, Tushant Mittal, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">PODC 2025</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2411.13334">Sublinear-Time Sampling of Spanning Trees in the Congested Clique</a></h3>
+          <div class="authors">Sriram V. Pemmaraju, <strong>Sourya Roy</strong>, Joshua Z. Sobel</div>
+        </li>
+        <li class="pub">
+          <span class="venue">In submission</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2405.18998">Derandomized Non-Abelian Homomorphism Testing in Low Soundness Regime</a></h3>
+          <div class="authors">Tushant Mittal, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">FOCS 2023</span>
+          <h3 class="pub-title">Gilbert and Varshamov Meet Johnson: List-Decoding Explicit Nearly-Optimal Binary Codes</h3>
+          <div class="authors">Silas Richelson, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">ECCV 2022</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2207.07783">Learning Long-Term Spatial-Temporal Graphs for Active Speaker Detection</a></h3>
+          <div class="authors">Kyle Min, <strong>Sourya Roy</strong>, Subarna Tripathi, Tanaya Guha, Somdeb Majumdar</div>
+        </li>
+        <li class="pub">
+          <span class="venue">FOCS 2022</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2209.07024">Almost Ramanujan Expanders from Arbitrary Expanders via Operator Amplification</a></h3>
+          <div class="authors">Fernando Granha Jeronimo, Tushant Mittal, <strong>Sourya Roy</strong>, Avi Wigderson</div>
+        </li>
+        <li class="pub">
+          <span class="venue">ITCS 2022</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/2109.12627">Mixing of 3-Term Progressions in Quasirandom Groups</a></h3>
+          <div class="authors">Amey Bhangale, Prahladh Harsha, <strong>Sourya Roy</strong></div>
+        </li>
+        <li class="pub">
+          <span class="venue">CVPR 2018</span>
+          <h3 class="pub-title"><a href="https://openaccess.thecvf.com/content_cvpr_2018/html/Roy_Exploiting_Transitivity_for_CVPR_2018_paper.html">Exploiting Transitivity for Learning Person Re-Identification Models on a Budget</a></h3>
+          <div class="authors"><strong>Sourya Roy</strong>, Sujoy Paul, Neal E. Young, Amit K. Roy-Chowdhury</div>
+        </li>
+        <li class="pub">
+          <span class="venue">ECCV 2018</span>
+          <h3 class="pub-title"><a href="https://arxiv.org/abs/1807.10418">W-TALC: Weakly-Supervised Temporal Activity Localization and Classification</a></h3>
+          <div class="authors">Sujoy Paul, <strong>Sourya Roy</strong>, Amit K. Roy-Chowdhury</div>
+        </li>
+      </ol>
+    </section>
+  </main>
   </div>
-</section>
 
-
-    
-    <main>
-      <section class="section" id="publications">
-        <h2 class="section-title">Selected Publications</h2>
-        <div class="accent-line" aria-hidden="true"></div>
-
-        <div class="list-card publications-card" aria-label="Selected publications">
-
-
-
-          <article class="publication">
-  <div class="number">1</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2609.25292">
-      Near-Optimal Online Metric Matching on &Delta;-ary HST
-    </a>
-    <span class="pub-venue">— SOFSEM 2027</span>
-  </h3>
-  <div class="authors">
-    Parth Gor, <strong>Sourya Roy</strong>, Kasturi Varadarajan
-  </div>
-</article>
-
-          <article class="publication">
-  <div class="number">2</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2605.26450">Low Soundness Linearity Testing on the Half-Slice, 2026</a>
-    <span class="pub-venue">— In submission</span>
-  </h3>
-  <div class="authors">Haakon Larsen, Tushant Mittal, Silas Richelson, <strong>Sourya Roy</strong></div>
-</article>
-
-
-          <article class="publication">
-  <div class="number">3</div>
-  <h3 class="pub-title">
-    Improved Bounds for Distributed Random Walks and Spanning Trees
-    <span class="pub-venue">— PODC 2026</span>
-  </h3>
-  <div class="authors">Gopal Pandurangan, Sriram Pemmaraju, <strong>Sourya Roy</strong>, Joshua Sobel</div>
-</article>
-
-          
-          
-       <article class="publication">
-  <div class="number">4</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2509.05871">A General Framework for Low Soundness Homomorphism Testing</a>
-    <span class="pub-venue">— ITCS 2026</span>
-  </h3>
-  <div class="authors">Tushant Mittal, <strong>Sourya Roy</strong></div>
-</article>
-
-<article class="publication">
-  <div class="number">5</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2507.14445">Pseudorandomness of Expander Walks via Fourier Analysis on Groups</a>
-    <span class="pub-venue">— RANDOM 2025</span>
-  </h3>
-  <div class="authors">Fernando Granha Jeronimo, Tushant Mittal, <strong>Sourya Roy</strong></div>
-</article>
-
-<article class="publication">
-  <div class="number">6</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2411.13334">Sublinear-Time Sampling of Spanning Trees in the Congested Clique</a>
-    <span class="pub-venue">— PODC 2025</span>
-  </h3>
-  <div class="authors">Sriram V. Pemmaraju, <strong>Sourya Roy</strong>, Joshua Z. Sobel</div>
-</article>
-
-<article class="publication">
-  <div class="number">7</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2405.18998">Derandomized Non-Abelian Homomorphism Testing in Low Soundness Regime</a>
-    <span class="pub-venue">— In submission</span>
-  </h3>
-  <div class="authors">Tushant Mittal, <strong>Sourya Roy</strong></div>
-</article>
-
-<article class="publication">
-  <div class="number">8</div>
-  <h3 class="pub-title">
-    Gilbert and Varshamov Meet Johnson: List-Decoding Explicit Nearly-Optimal Binary Codes
-    <span class="pub-venue">— FOCS 2023</span>
-  </h3>
-  <div class="authors">Silas Richelson, <strong>Sourya Roy</strong></div>
-</article>
-
-<article class="publication">
-  <div class="number">9</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2207.07783">Learning Long-Term Spatial-Temporal Graphs for Active Speaker Detection</a>
-    <span class="pub-venue">— ECCV 2022</span>
-  </h3>
-  <div class="authors">Kyle Min, <strong>Sourya Roy</strong>, Subarna Tripathi, Tanaya Guha, Somdeb Majumdar</div>
-</article>
-
-<article class="publication">
-  <div class="number">10</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2209.07024">Almost Ramanujan Expanders from Arbitrary Expanders via Operator Amplification</a>
-    <span class="pub-venue">— FOCS 2022</span>
-  </h3>
-  <div class="authors">Fernando Granha Jeronimo, Tushant Mittal, <strong>Sourya Roy</strong>, Avi Wigderson</div>
-</article>
-
-<article class="publication">
-  <div class="number">11</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2109.12627">Mixing of 3-Term Progressions in Quasirandom Groups</a>
-    <span class="pub-venue">— ITCS 2022</span>
-  </h3>
-  <div class="authors">Amey Bhangale, Prahladh Harsha, <strong>Sourya Roy</strong></div>
-</article>
-
-<article class="publication">
-  <div class="number">12</div>
-  <h3 class="pub-title">
-    <a href="https://openaccess.thecvf.com/content_cvpr_2018/html/Roy_Exploiting_Transitivity_for_CVPR_2018_paper.html">Exploiting Transitivity for Learning Person Re-Identification Models on a Budget</a>
-    <span class="pub-venue">— CVPR 2018</span>
-  </h3>
-  <div class="authors"><strong>Sourya Roy</strong>, Sujoy Paul, Neal E. Young, Amit K. Roy-Chowdhury</div>
-</article>
-
-<article class="publication">
-  <div class="number">13</div>
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/1807.10418">W-TALC: Weakly-Supervised Temporal Activity Localization and Classification</a>
-    <span class="pub-venue">— ECCV 2018</span>
-  </h3>
-  <div class="authors">Sujoy Paul, <strong>Sourya Roy</strong>, Amit K. Roy-Chowdhury</div>
-</article>
-
-           
-          
-
-          
-
-         
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="contact">
-      <div class="footer-inner">
-        <a class="email" href="mailto:sourya-roy@uiowa.edu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m3 7 9 6 9-6" />
-          </svg>
-          sourya-roy@uiowa.edu
+  <footer class="footer" id="contact">
+    <div class="wrap footer-inner">
+      <a href="mailto:sourya-roy@uiowa.edu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        sourya-roy@uiowa.edu
+      </a>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?hl=en&user=E8YS9QEAAAAJ&view_op=list_works&sortby=pubdate" aria-label="Google Scholar profile">
+          <span class="scholar-icon" aria-hidden="true">G</span> Scholar
         </a>
-
-        <div class="divider" aria-hidden="true"></div>
-
-        <div class="socials" aria-label="Academic profile links">
-          <a class="scholar-link" href="https://scholar.google.com/citations?hl=en&user=E8YS9QEAAAAJ&view_op=list_works&sortby=pubdate" aria-label="Google Scholar profile">
-            <span class="scholar-icon" aria-hidden="true">G</span>
-            Scholar
-          </a>
-        </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </body>
 </html>
